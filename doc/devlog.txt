@@ -1,0 +1,10 @@
+Team Flask Chained - Jesse Hall, Ayham Alnasser, Ivan Galakhov, Hong Wei Chen
+SoftDev1 pd1
+P02 -- The End
+2020-01-06
+
+ivanG -- 2020-01-06 21:40
+      Added all requirements
+      Finished authentication system
+      Set up some database
+      Added makefile

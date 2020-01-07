@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card w-75 text-center mx-auto">
+    <div class="card-body">
+        <h4 class="card-title">Welcome to Sudocool!</h4>
+        Welcome to sudocool!
+
+        <br><br>
+        <a role="button" class="btn btn-primary" href="{{ url_for('auth.login') }}">Log In</a>
+        <a role="button" class="btn btn-secondary" href="{{ url_for('auth.signup') }}">Sign Up</a>
+    </div>
+
+</div>
+
+{% endblock content %}

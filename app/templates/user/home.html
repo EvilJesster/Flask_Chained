@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card mx-auto w-50">
+    <div class="card-body">
+        <h4 class="card-title text-center">You are logged in!</h4>
+        Welcome, {{ current_user.username }}! You are now logged into Sudocool. Soon, there shall be things to do here.
+    </div>
+</div>
+{% endblock content %}
