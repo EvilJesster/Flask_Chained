@@ -8,3 +8,9 @@ user = Blueprint('user', __name__)
 def home():
 
     return render_template('user/home.html')
+
+@user.route('/sudoku_test')
+@login_required
+def sudoku_test():
+
+    return render_template('user/sudoku_test.html')

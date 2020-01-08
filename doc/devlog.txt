@@ -10,4 +10,7 @@ ivanG -- 2020-01-06 21:40
       Added makefile
 
 jesseH -- 2020-01-07
-      Design doc
+       Uploaded Design doc
+
+ivanG -- 2020-01-7 18:00
+      Wrote CSS for sudoku board
