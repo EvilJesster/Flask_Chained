@@ -4,7 +4,12 @@ import time
 import copy
 import random
 
-level = "Medium"
+DEBUG = False
+EASY = 'Easy'
+MEDIUM = 'Medium'
+HARD = 'Hard'
+INSANE = 'Insane'
+
 
 """ [Level of Difficulty] = Input the level of difficulty of the sudoku puzzle. Difficulty levels
         include ‘Easy’ ‘Medium’ ‘Hard’ and ‘Insane’. Outputs a sudoku of desired
@@ -98,6 +103,36 @@ def emptySudoku():
             ans.append(c)
     return ans
 
+def sudokuToArray(sudoku):
+    row1 = []
+    row2 = []
+    row3 = []
+    row4 = []
+    row5 = []
+    row6 = []
+    row7 = []
+    row8 = []
+    row9 = []
+    for i in range(81):
+        if i in range(0, 9):
+            row1.append(sudoku[i].returnSolved())
+        if i in range(9, 18):
+            row2.append(sudoku[i].returnSolved())
+        if i in range(18, 27):
+            row3.append(sudoku[i].returnSolved())
+        if i in range(27, 36):
+            row4.append(sudoku[i].returnSolved())
+        if i in range(36, 45):
+            row5.append(sudoku[i].returnSolved())
+        if i in range(45, 54):
+            row6.append(sudoku[i].returnSolved())
+        if i in range(54, 63):
+            row7.append(sudoku[i].returnSolved())
+        if i in range(63, 72):
+            row8.append(sudoku[i].returnSolved())
+        if i in range(72, 81):
+            row9.append(sudoku[i].returnSolved())
+    return row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8 + row9
 
 def printSudoku(sudoku):
     '''Prints out a sudoku in a format that is easy for a human to read'''
@@ -140,6 +175,8 @@ def printSudoku(sudoku):
     print(row7[0:3], row7[3:6], row7[6:10])
     print(row8[0:3], row8[3:6], row8[6:10])
     print(row9[0:3], row9[3:6], row9[6:10])
+
+    
 
 
 def sudokuGen():
@@ -333,10 +370,12 @@ def main(level):
             return main(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
-        return printSudoku(s[0])
+        if DEBUG:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+            printSudoku(s[0])
+        return sudokuToArray(s[0])
     if level == 'Medium':
         p = perfectSudoku()
         s = puzzleGen(p)
@@ -349,10 +388,13 @@ def main(level):
             return main(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
-        return printSudoku(s[0])
+        if DEBUG:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+            printSudoku(s[0])
+        return sudokuToArray(s[0])
+
     if level == 'Hard':
         p = perfectSudoku()
         s = puzzleGen(p)
@@ -370,10 +412,13 @@ def main(level):
             return main(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
-        return printSudoku(s[0])
+        if DEBUG:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+        printSudoku(s[0])
+        return sudokuToArray(s[0])
+
     if level == 'Insane':
         p = perfectSudoku()
         s = puzzleGen(p)
@@ -384,12 +429,20 @@ def main(level):
                 return main(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
-        return printSudoku(s[0])
+        if DEBUG:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+            printSudoku(s[0])
+        return sudokuToArray(s[0])
     else:
         raise ValueError
 
 
-main(level)
+def gen_sudoku(difficulty):
+    assert(difficulty in [EASY, MEDIUM, HARD, INSANE])
+    return main(difficulty)
+
+print(gen_sudoku(INSANE))
+
+
