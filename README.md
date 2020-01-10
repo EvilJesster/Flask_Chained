@@ -10,7 +10,8 @@ Ivan Galakhov
 
 Ayham Alnasser
 * Sudoku puzzle generator [done]
-* Sudoku puzzle solver [in progress]
+* Sudoku puzzle solver [done]
+* Backend DB [in progress]
 
 Hong Wei Chen
 * Leaderboard functionality
