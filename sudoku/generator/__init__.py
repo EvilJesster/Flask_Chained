@@ -343,8 +343,9 @@ def main(level):
 
 def gen_sudoku(difficulty):
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE])
-    return main(difficulty)
-
+    ans = main(difficulty)[:81]
+    return ans
+    
 print(gen_sudoku(EASY))
 
 
