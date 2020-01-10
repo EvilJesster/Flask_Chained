@@ -15,6 +15,9 @@ class Cell:
         self.position = position
         self.solved = False
 
+    def __repr__(self):
+        return str(self.answer)
+
     def remove(self, num):
         if num in self.possibleAnswers and self.solved == False:
             self.possibleAnswers.remove(num)
@@ -252,6 +255,7 @@ def puzzle_gen(sudoku):
             f = solve(sudoku)
             ##            print("Guesses: " + str(f[1]))
             ##            print("Level: " + str(f[2]))
+            #print([str(x) for x in sudoku], f[1], f[2])
             return sudoku, f[1], f[2]
 
 
@@ -268,6 +272,7 @@ def main(level):
     n = 0
     if level == 'Easy':
         p = perfect_sudoku()
+        solved = copy.deepcopy(p)
         s = puzzle_gen(p)
         if s[2] != 'Easy':
             return main(level)
@@ -277,11 +282,11 @@ def main(level):
             print("Runtime is " + str(t3) + " seconds")
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
-            printSudoku(s[0])
-        return sudoku_to_array(s[0])
-    if level == 'Medium':
-        p = perfect_sudoku()
-        s = puzzle_gen(p)
+            return sudoku_to_array(s[0])[:81], solved
+        if level == 'Medium':
+            p = perfect_sudoku()
+            solved = copy.deepcopy(p)
+            s = puzzle_gen(p)
         while s[2] == 'Easy':
             n += 1
             s = puzzle_gen(p)
@@ -296,10 +301,10 @@ def main(level):
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
             printSudoku(s[0])
-        return sudoku_to_array(s[0])
-
+        return sudoku_to_array(s[0])[:81], solved
     if level == 'Hard':
         p = perfect_sudoku()
+        solved = copy.deepcopy(p)
         s = puzzle_gen(p)
         while s[2] == 'Easy':
             n += 1
@@ -320,10 +325,10 @@ def main(level):
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
         printSudoku(s[0])
-        return sudoku_to_array(s[0])
-
+        return sudoku_to_array(s[0])[:81], solved
     if level == 'Insane':
         p = perfect_sudoku()
+        solved = copy.deepcopy(p)
         s = puzzle_gen(p)
         while s[2] != 'Insane':
             n += 1
@@ -337,15 +342,13 @@ def main(level):
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
             printSudoku(s[0])
-        return sudoku_to_array(s[0])
+        return sudoku_to_array(s[0])[:81], solved
     else:
         raise ValueError
 
 def gen_sudoku(difficulty):
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE])
-    ans = main(difficulty)[:81]
+    ans = main(difficulty)
     return ans
     
 print(gen_sudoku(EASY))
-
-
