@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from app.core.routes import core as core_blueprint
 from app.auth.routes import auth as auth_blueprint
 from app.user.routes import user as user_blueprint
+from app.api.routes import api as api_blueprint
 from app.models import db, User
 from app.config import *
 
@@ -10,7 +11,7 @@ from app.config import *
 # initialize app, and app configurations
 app = Flask(__name__)
 
-app.secret_key = (SECRET_KEY_FAKE if DEBUG else SECRET_KEY_REAL)
+app.secret_key = (SECRET_KEY_FAKE if not DEBUG else SECRET_KEY_REAL)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = SQLALCHEMY_TRACK_MODIFICATIONS
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
@@ -40,3 +41,4 @@ login_manager.login_message_category = 'danger'
 app.register_blueprint(core_blueprint, url_prefix='/')
 app.register_blueprint(auth_blueprint, url_prefix='/auth')
 app.register_blueprint(user_blueprint, url_prefix='/user')
+app.register_blueprint(api_blueprint, url_prefix='/api')

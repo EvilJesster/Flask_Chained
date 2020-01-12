@@ -347,8 +347,8 @@ def main(level):
         raise ValueError
 
 def gen_sudoku(difficulty):
+    # for testing    
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE])
     ans = main(difficulty)
     return ans
-    
-print(gen_sudoku(EASY))
+

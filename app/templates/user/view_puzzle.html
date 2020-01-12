@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="puzzle">
+
+
+</div>
+
+<br>
+
+<div class="text-center">
+    <button class="btn btn-info" onclick="check_board()">I'm done. Check my work</button>
+</div>
+
+
+{% endblock content %}
+
+{% block js %}
+
+<script>
+    let BOARD_UUID = "{{sudoku.uuid}}"
+    let preset_numbers = "{{ sudoku.unsolved_str }}"
+
+    let check_board = () => {
+        check_board_correct("#puzzle", "{{sudoku.uuid}}");
+    }
+
+
+
+    $(document).ready(() => {
+        // start the board
+        initialize_board("#puzzle");
+
+        // load preset numbers
+        load_preset_numbers('#puzzle', preset_numbers);
+    });
+</script>
+
+{% endblock js %}

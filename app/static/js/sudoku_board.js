@@ -56,8 +56,14 @@ toggle_pencilmark = (td, number) => {
 };
 
 toggle_number = (td, number) => {
+    // don't do anything if the number is permanent
+    if (td.children().length == 1)
+        return;
+
     let to_toggle = $(td.children()[1]);
     let pencilmarks = $(td.children()[0]);
+
+    if (to_toggle.hasClass("permanent")) return;
 
     if (to_toggle.text() == "") {
         to_toggle.text(number);
@@ -85,6 +91,57 @@ show_pencilmark = (id, row, col, number) => {
     console.log(the_td);
 
     toggle_pencilmark(the_td, number);
+
+};
+
+// loads preset numbers
+load_preset_numbers = (id, nums) => {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (nums[i * 9 + j] != "0") {
+                let to_show = $(get_td(id, j, i).children()[1]);
+                let pencilmarks = $(get_td(id, j, i).children()[0]);
+                to_show.show();
+                pencilmarks.remove();
+                to_show.addClass("permanent");
+                to_show.text(nums[i * 9 + j]);
+            }
+        }
+    }
+};
+
+// pulls board state
+get_board_state = (id) => {
+    let res = "";
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let td = get_td(id, j, i);
+            let t = "";
+            if (td.children().length == 1) {
+                t = $(td.children()[0]).text();
+            } else {
+                t = $(td.children()[1]).text();
+            }
+            res += (t == "" ? "0" : t);
+        }
+    }
+
+    return res;
+};
+
+// check if board is correct
+check_board_correct = (id, uuid) => {
+    let state = get_board_state(id);
+
+    $.get("/api/check_answer/" + uuid + "/" + state, {}, (data, status) => {
+        data = JSON.parse(data);
+        if (data) {
+            alert("Board is correct! Congrats!");
+        } else {
+            alert("Board is incorrect..");
+        }
+    });
 
 };
 

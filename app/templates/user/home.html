@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="card mx-auto w-50">
-    <div class="card-body">
-        <h4 class="card-title text-center">You are logged in!</h4>
-        Welcome, {{ current_user.username }}! You are now logged into Sudocool. Soon, there shall be things to do here.
-    </div>
-</div>
+
+<h4>You are logged in!</h4>
+
+<p>
+    Welcome, {{ current_user.username }}! You are now logged into Sudocool
+</p>
+
+<h5>Start A New Puzzle</h5>
+<a role="button" class="btn btn-primary" href="{{ url_for('user.new_puzzle', diff='easy')}}" )">Easy</a>
+
+
+
+
 {% endblock content %}

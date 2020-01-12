@@ -29,3 +29,9 @@ ivanG -- 2019-01-09 9:13
 
 ayhamA -- 2019-01-09 18:53
        Made the sudoku generator and solver code readable, PEP8 compliant, and more efficient. pushed a temporary solving mechanism while trying to find more efficient recursive sudoku solving algos
+
+ivanG -- 2019-01-12 2:19
+      Finished MVP
+      You can now generate sudokus from your profile which will create appropriate boards which you can then
+      	  attempt to solve, and check your answer when you want to. It's actually very neat.
+      Everything is done asynchronously, too

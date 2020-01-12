@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<br><br><br>
+<div class="text-center">
+    <h1>Your Puzzle is being Generated </h1>
+    <p>This page will automatically reload once it's done</p>
+    <br>
+    <small>
+        {{ random_fact }}
+    </small>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+    // reload after 5 seconds
+    window.setTimeout(() => {
+        window.location.reload()
+    }, 5000)
+</script>
+{% endblock js %}
