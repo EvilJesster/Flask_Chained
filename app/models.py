@@ -25,7 +25,20 @@ class Sudoku(db.Model):
         self.uuid = uuid
         self.solved_str = solve
         self.unsolved_str = unsolve
-    
+
     @property
     def is_active():
         return (unsolved_str is not None and solve_str is not None)
+
+class Leaderboard(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), nullable = False)
+    game = db.Column(db.String(100), nullable = False)
+    time = db.Column(db.Float, nullable = False)
+    difficulty = db.Column(db.String(20), nullable = False)
+
+    def __init__(self, username, game, time, difficulty):
+        self.username = username
+        self.game = game
+        self.time = time
+        self.difficulty = difficulty

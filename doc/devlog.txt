@@ -23,18 +23,28 @@ ivanG -- 2020-01-08 9:33
 ayhamA -- 2020-01-09 8:45
        Added sudoku generator based on difficulty
 
-ivanG -- 2019-01-09 9:13
+ivanG -- 2020-01-09 9:13
       Refactored some of Ayham's code and moved it into a separate python module
       		 instead of a file
 
-ayhamA -- 2019-01-09 18:53
+ayhamA -- 2020-01-09 18:53
        Made the sudoku generator and solver code readable, PEP8 compliant, and more efficient. pushed a temporary solving mechanism while trying to find more efficient recursive sudoku solving algos
 
-ivanG -- 2019-01-12 2:19
+ivanG -- 2020-01-12 2:19
       Finished MVP
       You can now generate sudokus from your profile which will create appropriate boards which you can then
       	  attempt to solve, and check your answer when you want to. It's actually very neat.
       Everything is done asynchronously, too
 
+chenH -- 2020-01-13 2:50
+      Added leaderboard object for database in sqlalchemy, need to use elapsed time to rank
+      Added leaderboard and settings page, and placed on the navbar, still under construction
+      Implemented random facts API
+      Loading screen now displays a random fact
+      Updated profile page with instructions, games in progress, and games completed, still under construction
+
 ivanG -- 2019-01-13 8:12
       Added (amazingly photoshopped) team flag
+
+
+
