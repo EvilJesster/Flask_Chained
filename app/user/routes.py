@@ -5,6 +5,8 @@ from app.models import Sudoku, db
 import threading
 import time
 from uuid import uuid4
+from urllib.request import urlopen
+import json
 
 user = Blueprint('user', __name__)
 
@@ -14,6 +16,20 @@ user = Blueprint('user', __name__)
 def home():
 
     return render_template('user/home.html')
+
+# leaderbaord
+@user.route('/leaderboard')
+@login_required
+def leaderboard():
+
+    return render_template('user/leaderboard.html')
+
+# Settings
+@user.route('/settings')
+@login_required
+def settings():
+
+    return render_template('user/settings.html')
 
 # test route for sudoku board demo
 @user.route('/sudoku_test')
@@ -52,14 +68,14 @@ def new_puzzle(diff):
 
     # generate a unique ID so we can refer to this puzzle
     uuid = str(uuid4())
-    
+
     # spawn a task to make a new puzzle
     # this way, it can take a long ish time for the task to generate
     thr = threading.Thread(target=new_puzzle_callback, args=(diff.capitalize(), uuid))
     thr.start()
-    
 
-    
+
+
     return redirect(url_for('user.view_puzzle', uuid=uuid))
 
 # solve a puzzle
@@ -71,15 +87,16 @@ def view_puzzle(uuid):
 
     if to_show is None:
         # no puzzle yet, let's give the user the loading page
-        # generate a random fact so the don't get bored
-        # HONGWEI this is ur job!
+        # generate a random fact so they don't get bored
+        u = urlopen("https://uselessfacts.jsph.pl/random.json?language=en")
+        get = u.read()
+        info = json.loads(get)
+        random_fact=info['text']
 
-        random_fact='(Rnadom Fcat)'
-        
         return render_template('user/puzzle_loading.html', random_fact=random_fact)
 
     # puzzle exists
     # in the future, create a save state
     # for now, just display the puzzle
-    
+
     return render_template('user/view_puzzle.html', sudoku=to_show)

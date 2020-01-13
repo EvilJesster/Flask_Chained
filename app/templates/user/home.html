@@ -2,16 +2,29 @@
 
 {% block content %}
 
-<h4>You are logged in!</h4>
+<h4>Profile</h4>
 
 <p>
-    Welcome, {{ current_user.username }}! You are now logged into Sudocool
+    Welcome, {{ current_user.username }}! You are logged into Sudocool.
 </p>
 
+<h5> How to Play </h5>
+<p>
+    0. Know how to play sudoku
+</p>
+<p>
+    1. Hover your mouse over a tile and press any number from 1-9 to PLACE a number
+</p>
+<p>
+    2. Hold the SHIFT key and press any number from 1-9 while hovering your mouse over a tile to MARK a number
+</p>
 <h5>Start A New Puzzle</h5>
-<a role="button" class="btn btn-primary" href="{{ url_for('user.new_puzzle', diff='easy')}}" )">Easy</a>
+<a role="button" class="btn btn-success" href="{{ url_for('user.new_puzzle', diff='easy')}}" )">Easy</a>
 
+<br>
+<br>
+<h5> Games in Progess </h5>
 
-
+<h5> Games Completed </h5>
 
 {% endblock content %}
