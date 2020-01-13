@@ -1,6 +1,6 @@
 from flask import Blueprint
-from flask_login import login_required
-from app.models import Sudoku
+from flask_login import login_required, current_user
+from app.models import db, Sudoku, SudokuSaveState
 from json import dumps
 
 api = Blueprint('api', __name__)
@@ -15,3 +15,21 @@ def check_answer(uuid, answer):
     
     return dumps((to_check.solved_str == answer))
 
+@api.route('/save_state/<uuid>/<numbers>/<pencilmarks>')
+@login_required
+def save_state(uuid, numbers, pencilmarks):
+    sss = SudokuSaveState.query.filter_by(user_id = current_user.id).all();
+
+    ss = None
+
+    for i in sss:
+        if i.board.uuid == uuid:
+            ss = i
+            break
+
+    ss.number_str = numbers
+    ss.pencilmark_str = pencilmarks
+
+    db.session.commit()
+
+    return ''

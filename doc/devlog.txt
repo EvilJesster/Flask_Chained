@@ -50,3 +50,6 @@ ivanG -- 2019-01-13 9:50
       Added table for keeping track of sudoku save states
       Vibe checked the database (reset everything)
 
+ivanG -- 2019-01-13 16:26
+      Puzzles are now saved as user is working on them (through our own API)
+      It's actually pretty cool

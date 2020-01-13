@@ -1,12 +1,13 @@
-from flask import Blueprint, render_template, url_for, redirect
-from flask_login import login_required
+from flask import Blueprint, render_template, url_for, redirect, flash
+from flask_login import login_required, current_user
 from sudoku.generator import gen_sudoku, EASY, MEDIUM, HARD, INSANE
-from app.models import Sudoku, db
+from app.models import Sudoku, SudokuSaveState, db
 import threading
 import time
 from uuid import uuid4
 from urllib.request import urlopen
 import json
+import time
 
 user = Blueprint('user', __name__)
 
@@ -95,8 +96,14 @@ def view_puzzle(uuid):
 
         return render_template('user/puzzle_loading.html', random_fact=random_fact)
 
-    # puzzle exists
-    # in the future, create a save state
-    # for now, just display the puzzle
 
-    return render_template('user/view_puzzle.html', sudoku=to_show)
+    # create a new state if needed
+    save_state = SudokuSaveState.query.filter_by(user_id=current_user.id, sudoku_id=to_show.id).first()
+    if save_state is None:
+            new_state = SudokuSaveState(current_user, to_show)
+            db.session.add(new_state)
+            db.session.commit()
+            save_state = new_state
+
+
+    return render_template('user/view_puzzle.html', sudoku=to_show, state=save_state, time=int(time.time()))

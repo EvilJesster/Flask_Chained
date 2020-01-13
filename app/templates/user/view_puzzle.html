@@ -2,25 +2,54 @@
 
 {% block content %}
 
-<div id="puzzle">
+<div class="row">
 
+    <div class="col-8">
+        <div id="puzzle"></div>
+    </div>
+    <div class="col-4">
+        <div class="text-center">
+            <h4>Time:</h4>
+            <div id="timer">{{ time - state.time_start }}</div>
+        </div>
+        <hr>
+        <div>
+            <h5> How to Play </h5>
+            <p>
+                0. Know how to play sudoku
+            </p>
+            <p>
+                1. Hover your mouse over a tile and press any number from 1-9 to PLACE a number
+            </p>
+            <p>
+                2. Hold the SHIFT key and press any number from 1-9 while hovering your mouse over a tile to MARK a number
+            </p>
+            <p>
+                3. Once you're done, press the "I'm done" button below.
+            </p>
+            <p>
+                4. Your work is saved automatically and the timer is calulacted server-side, so don't try to cheat.
+            </p>
+        </div>
+        <hr>
+        <div class="text-center">
+            <button class="btn btn-info" onclick="check_board()">I'm done. Check my work</button>
+        </div>
 
+    </div>
 </div>
 
 <br>
-
-<div class="text-center">
-    <button class="btn btn-info" onclick="check_board()">I'm done. Check my work</button>
-</div>
-
 
 {% endblock content %}
 
 {% block js %}
 
 <script>
-    let BOARD_UUID = "{{sudoku.uuid}}"
-    let preset_numbers = "{{ sudoku.unsolved_str }}"
+    let BOARD_UUID = "{{sudoku.uuid}}";
+    let preset_numbers = "{{ sudoku.unsolved_str }}";
+    let saved_numbers = "{{ state.number_str }}";
+    let saved_pencilmarks = "{{ state.pencilmark_str }}";
 
     let check_board = () => {
         check_board_correct("#puzzle", "{{sudoku.uuid}}");
@@ -34,6 +63,13 @@
 
         // load preset numbers
         load_preset_numbers('#puzzle', preset_numbers);
+
+        // recover state
+        recover_save_state('#puzzle', saved_numbers, saved_pencilmarks);
+
+        window.setInterval(() => {
+            save_board_state('#puzzle', "{{sudoku.uuid}}");
+        }, 1000);
     });
 </script>
 

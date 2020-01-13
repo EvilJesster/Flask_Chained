@@ -145,6 +145,78 @@ check_board_correct = (id, uuid) => {
 
 };
 
+// get user number state
+get_user_number_state = (id) => {
+    let ret = "";
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let cur_td = get_td(id, j, i);
+            if (cur_td.children().length == 2 && $(cur_td.children()[1]).text() != "") {
+                // meaning this cell is user-modifiable
+                ret += $(cur_td.children()[1]).text();
+            } else {
+                // otherwise
+                ret += "_";
+            }
+        };
+    };
+
+    return ret;
+};
+
+// get user pencilmark state
+get_user_pencilmark_state = (id) => {
+    let ret = "";
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let cur_td = get_td(id, j, i);
+            if (cur_td.children().length == 2) {
+                let child = $(cur_td.children()[0]).children();
+
+                for (let k = 0; k < 9; k++) {
+                    ret += ($(child[k]).css("display") == "none" ? "_" : $(child[k]).text());
+                }
+
+            } else {
+                ret += "_________";
+            }
+        };
+    };
+
+    return ret;
+};
+
+// save board state (talks to server)
+save_board_state = (id, uuid) => {
+    // get board states
+    let cur_num_state = get_user_number_state('#puzzle');
+    let cur_pencilmark_state = get_user_pencilmark_state('#puzzle');
+
+    $.get("/api/save_state/" + uuid + "/" + cur_num_state + "/" + cur_pencilmark_state, {}, (d, s) => {
+
+
+    });
+};
+
+recover_save_state = (id, numbers, pencilmarks) => {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            // set number
+            if (numbers[i * 9 + j] !== "_") {
+                toggle_number(get_td(id, j, i), numbers[i * 9 + j]);
+            }
+            for (let k = 0; k < 9; k++) {
+                if (pencilmarks[i * 91 + j * 8 + k] != "_") {
+                    toggle_pencilmark(get_td(id, j, i),
+                        parseInt(pencilmarks[i * 91 + j * 8 + k]));
+                }
+            }
+        };
+    };
+};
+
 $(document).ready(() => {
     document.onkeydown = (e) => {
         if (e.keyCode == 16) {
