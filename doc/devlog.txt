@@ -35,3 +35,6 @@ ivanG -- 2019-01-12 2:19
       You can now generate sudokus from your profile which will create appropriate boards which you can then
       	  attempt to solve, and check your answer when you want to. It's actually very neat.
       Everything is done asynchronously, too
+
+ivanG -- 2019-01-13 8:12
+      Added (amazingly photoshopped) team flag
