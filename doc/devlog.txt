@@ -46,5 +46,7 @@ chenH -- 2020-01-13 2:50
 ivanG -- 2019-01-13 8:12
       Added (amazingly photoshopped) team flag
 
-
+ivanG -- 2019-01-13 9:50
+      Added table for keeping track of sudoku save states
+      Vibe checked the database (reset everything)
 
