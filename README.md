@@ -40,7 +40,7 @@ The classic logic game, Sudoku, in a portable website built with JavaScript. The
 
 
 # Launch Codes 
-1. Open Your Terminal
+1. Open Your Terminal and cd into the location of this project
 2. Make sure you have [make](https://www.gnu.org/software/make/) installed (hint hint, you probably do)
 2. Type: "pip install -r requirements.txt"
 3. Then type: "make run"
