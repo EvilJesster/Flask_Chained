@@ -209,7 +209,7 @@ recover_save_state = (id, numbers, pencilmarks) => {
             }
             for (let k = 0; k < 9; k++) {
                 if (pencilmarks[i * 91 + j * 8 + k] != "_") {
-                    toggle_pencilmark(get_td(id, j, i),
+                    toggle_pencilmark(get_td(id, i, j),
                         parseInt(pencilmarks[i * 91 + j * 8 + k]));
                 }
             }
