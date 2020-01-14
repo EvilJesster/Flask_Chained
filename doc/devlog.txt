@@ -43,12 +43,15 @@ chenH -- 2020-01-13 2:50
       Loading screen now displays a random fact
       Updated profile page with instructions, games in progress, and games completed, still under construction
 
-ivanG -- 2019-01-13 8:12
+ivanG -- 2020-01-13 8:12
       Added (amazingly photoshopped) team flag
 
-ivanG -- 2019-01-13 9:50
+ivanG -- 2020-01-13 9:50
       Added table for keeping track of sudoku save states
       Vibe checked the database (reset everything)
+      
+chenH -- 2020-01-14 8:18
+      Added card and pdf for random useless facts API
 
 ivanG -- 2019-01-13 16:26
       Puzzles are now saved as user is working on them (through our own API)
