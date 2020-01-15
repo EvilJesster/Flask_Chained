@@ -7,6 +7,7 @@ EASY = 'Easy'
 MEDIUM = 'Medium'
 HARD = 'Hard'
 INSANE = 'Insane'
+DEMO = 'Demo'
 
 class Cell:
     def __init__(self, position):
@@ -353,7 +354,7 @@ def main(level):
     
 def gen_sudoku(difficulty):
     # for testing    
-    assert(difficulty in [EASY, MEDIUM, HARD, INSANE])
+    assert(difficulty in [EASY, MEDIUM, HARD, INSANE, DEMO])
     ans = main(difficulty)
     return ans
 
