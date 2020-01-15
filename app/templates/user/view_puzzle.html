@@ -10,7 +10,7 @@
     <div class="col-4">
         <div class="text-center">
             <h4>Time:</h4>
-            <div id="timer">{{ time - state.time_start }}</div>
+            <div id="timer"> {{ time - state.time_start }}</div>
         </div>
         <hr>
         <div>
@@ -55,7 +55,11 @@
         check_board_correct("#puzzle", "{{sudoku.uuid}}");
     }
 
-
+    window.setInterval(() => {
+    let timer = $("#timer");
+    let val = parseInt(timer.text());
+    timer.text(val+1);
+    }, 1000);
 
     $(document).ready(() => {
         // start the board
