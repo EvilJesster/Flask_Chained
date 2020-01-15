@@ -138,6 +138,7 @@ check_board_correct = (id, uuid) => {
         data = JSON.parse(data);
         if (data) {
             alert("Board is correct! Congrats!");
+            window.location = "/user/home";
         } else {
             alert("Board is incorrect..");
         }
@@ -194,10 +195,10 @@ save_board_state = (id, uuid) => {
     let cur_num_state = get_user_number_state('#puzzle');
     let cur_pencilmark_state = get_user_pencilmark_state('#puzzle');
 
-    $.get("/api/save_state/" + uuid + "/" + cur_num_state + "/" + cur_pencilmark_state, {}, (d, s) => {
-
-
-    });
+    $.post("/api/save_state/" + uuid, {
+        numbers: cur_num_state,
+        pencilmarks: cur_pencilmark_state
+    }, () => {});
 };
 
 recover_save_state = (id, numbers, pencilmarks) => {

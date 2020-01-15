@@ -8,6 +8,7 @@ from uuid import uuid4
 from urllib.request import urlopen
 import json
 import time
+from datetime import datetime
 
 user = Blueprint('user', __name__)
 
@@ -16,7 +17,16 @@ user = Blueprint('user', __name__)
 @login_required
 def home():
 
-    return render_template('user/home.html')
+    in_progress = []
+    completed = []
+
+    for i in current_user.boards:
+        if i.time_end is None:
+            in_progress.append((datetime.fromtimestamp(i.time_start), i.board.difficulty, i.board.uuid))
+        else:
+            completed.append((i.board.difficulty, i.time_end - i.time_start, i.board.uuid))
+
+    return render_template('user/home.html', in_progress=in_progress, completed=completed)
 
 # leaderbaord
 @user.route('/leaderboard')
@@ -53,7 +63,7 @@ def new_puzzle_callback(diff, uuid):
 
     with app.app_context():
 
-        n = Sudoku(uuid, solved_str, unsolved_str)
+        n = Sudoku(uuid, solved_str, unsolved_str, diff.upper())
         db.session.add(n)
         db.session.commit()
 
@@ -65,7 +75,7 @@ def new_puzzle(diff):
 
     # ensure that difficulty is right
     if not diff.capitalize() in [EASY, MEDIUM, HARD, INSANE]:
-        return ''
+        return 'no'
 
     # generate a unique ID so we can refer to this puzzle
     uuid = str(uuid4())
@@ -74,7 +84,6 @@ def new_puzzle(diff):
     # this way, it can take a long ish time for the task to generate
     thr = threading.Thread(target=new_puzzle_callback, args=(diff.capitalize(), uuid))
     thr.start()
-
 
 
     return redirect(url_for('user.view_puzzle', uuid=uuid))

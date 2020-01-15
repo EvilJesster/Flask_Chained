@@ -9,14 +9,19 @@
     </div>
     <div class="col-4">
         <div class="text-center">
+            {% if state.time_end is none %}
             <h4>Time:</h4>
             <div id="timer"> {{ time - state.time_start }}</div>
+            {% else %}
+            <h5>You have completed this puzzle!</h5>
+            <p>Your time was {{ state.time_end - state.time_start }} seconds</p>
+            {% endif %}
         </div>
         <hr>
         <div>
             <h5> How to Play </h5>
             <p>
-                0. Know how to play sudoku
+                0. Know <a href="https://sudoku.com/how-to-play/sudoku-rules-for-complete-beginners/" target="_blank"> how to play sudoku</a>
             </p>
             <p>
                 1. Hover your mouse over a tile and press any number from 1-9 to PLACE a number
@@ -31,10 +36,13 @@
                 4. Your work is saved automatically and the timer is calulacted server-side, so don't try to cheat.
             </p>
         </div>
+
+        {% if state.time_end is none %}
         <hr>
         <div class="text-center">
             <button class="btn btn-info" onclick="check_board()">I'm done. Check my work</button>
         </div>
+        {% endif %}
 
     </div>
 </div>
@@ -56,9 +64,9 @@
     }
 
     window.setInterval(() => {
-    let timer = $("#timer");
-    let val = parseInt(timer.text());
-    timer.text(val+1);
+        let timer = $("#timer");
+        let val = parseInt(timer.text());
+        timer.text(val + 1);
     }, 1000);
 
     $(document).ready(() => {
