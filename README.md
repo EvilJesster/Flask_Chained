@@ -11,7 +11,7 @@ Ivan Galakhov
 Ayham Alnasser
 * Sudoku puzzle generator [done]
 * Sudoku puzzle solver [done]
-* Backend DB [in progress]
+* Backend DB [done]
 
 Hong Wei Chen
 * Leaderboard functionality
