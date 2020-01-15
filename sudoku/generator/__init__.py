@@ -345,7 +345,12 @@ def main(level):
         return sudoku_to_array(s[0])[:81], solved
     else:
         raise ValueError
-
+    if level == 'Demo':
+        p = perfect_sudoku()
+        s = copy.deepcopy(p)
+        s[42] = s[51] = s[39] = 0
+        return sudoku_to_array(s[0])[:81], solved
+    
 def gen_sudoku(difficulty):
     # for testing    
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE])

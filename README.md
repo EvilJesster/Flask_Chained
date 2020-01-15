@@ -35,8 +35,7 @@ The classic logic game, Sudoku, in a portable website built with JavaScript. The
 * jQuery (QaF post incoming)
 
 # Wow! APIs?
-* Currently there are no APIs that this project uses due to the reason that there will be heavy asynchronous interaction between the frontend and backend through our own API (in order to do things like load sudoku puzzles and check for hints). As we implement this functionality, the design document will be updated accordingly. 
-* However, if we have the time (which we probably will), we will use [this great random facts API](https://uselessfacts.jsph.pl/) which requires no API keys! The API will be used to give the user something to look at while their sudoku puzzle is loading (which could take upwards of 30 seconds). Once we decide to do so, an API card shall be generated and placed both in our doc/ folder, and the knowledge base. 
+* [Random Useless Facts API](https://uselessfacts.jsph.pl/) which requires no API keys! The API will be used to give the user fun facts to look at while their sudoku puzzle is loading (which could take upwards of 30 seconds). 
 
 
 # Launch Codes 
