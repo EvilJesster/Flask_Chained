@@ -22,13 +22,15 @@ class Sudoku(db.Model):
     unsolved_str = db.Column(db.String(81), nullable=True)
     solved_str = db.Column(db.String(81), nullable=True)
     uuid = db.Column(db.String(100), nullable=False)
+    difficulty = db.Column(db.String(180), nullable=True)
 
     save_states = db.relationship('SudokuSaveState', back_populates='board')
 
-    def __init__(self, uuid, solve, unsolve):
+    def __init__(self, uuid, solve, unsolve, diff):
         self.uuid = uuid
         self.solved_str = solve
         self.unsolved_str = unsolve
+        self.difficulty = diff
 
 # save state
 # actually an association table

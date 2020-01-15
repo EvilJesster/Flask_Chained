@@ -1,8 +1,8 @@
-table {
+#puzzle table {
     margin: 1em auto;
 }
 
-td {
+#puzzle td {
     height: 60px;
     width: 60px;
     border: 1px solid;
@@ -10,7 +10,7 @@ td {
     margin: 0;
 }
 
-td .pencil-marks {
+#puzzle td .pencil-marks {
 
     width: 60px;
     height: 60px;
@@ -21,7 +21,7 @@ td .pencil-marks {
 
 }
 
-td .pencil-marks span {
+#puzzle td .pencil-marks span {
 
     position: absolute;
     width: 20px;
@@ -31,43 +31,43 @@ td .pencil-marks span {
     margin: 0%;
 }
 
-td .pencil-marks span:first-child {
+#puzzle td .pencil-marks span:first-child {
     transform: translate(0px, -4px);
 }
 
-td .pencil-marks span:nth-child(2) {
+#puzzle td .pencil-marks span:nth-child(2) {
     transform: translate(20px, -4px);
 }
 
-td .pencil-marks span:nth-child(3) {
+#puzzle td .pencil-marks span:nth-child(3) {
     transform: translate(40px, -4px);
 }
 
-td .pencil-marks span:nth-child(4) {
+#puzzle td .pencil-marks span:nth-child(4) {
     transform: translate(0px, 16px);
 }
 
-td .pencil-marks span:nth-child(5) {
+#puzzle td .pencil-marks span:nth-child(5) {
     transform: translate(20px, 16px);
 }
 
-td .pencil-marks span:nth-child(6) {
+#puzzle td .pencil-marks span:nth-child(6) {
     transform: translate(40px, 16px);
 }
 
-td .pencil-marks span:nth-child(7) {
+#puzzle td .pencil-marks span:nth-child(7) {
     transform: translate(0px, 36px);
 }
 
-td .pencil-marks span:nth-child(8) {
+#puzzle td .pencil-marks span:nth-child(8) {
     transform: translate(20px, 36px);
 }
 
-td .pencil-marks span:nth-child(9) {
+#puzzle td .pencil-marks span:nth-child(9) {
     transform: translate(40px, 36px);
 }
 
-td .actual-number {
+#puzzle td .actual-number {
     position: absolute;
     text-align: center;
     font-size: 60px;
@@ -76,22 +76,22 @@ td .actual-number {
     color: gray;
 }
 
-td:first-child {
+#puzzle td:first-child {
     border-left: solid;
 }
 
-td:nth-child(3n) {
+#puzzle td:nth-child(3n) {
     border-right: solid;
 }
 
-tr:first-child {
+#puzzle tr:first-child {
     border-top: solid;
 }
 
-tr:nth-child(3n) td {
+#puzzle tr:nth-child(3n) td {
     border-bottom: solid;
 }
 
-.permanent {
+#puzzle .permanent {
     color: black !important;
 }

@@ -2,29 +2,87 @@
 
 {% block content %}
 
-<h4>Profile</h4>
+<div class="row">
+    <div class="col-8">
+        <h5> Games in Progess </h5>
 
-<p>
-    Welcome, {{ current_user.username }}! You are logged into Sudocool.
-</p>
+        {% if in_progress|length != 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Time started</th>
+                    <th scope="col">Difficulty</th>
+                    <th scope="col">Continue</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in in_progress %}
+                <tr>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                    <td><a href="{{ url_for('user.view_puzzle', uuid=i[2]) }}">continue</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="text-center"><small><i>You don't have any boards in progress!</i></small></p>
+        {% endif %}
 
-<h5> How to Play </h5>
-<p>
-    0. Know how to play sudoku
-</p>
-<p>
-    1. Hover your mouse over a tile and press any number from 1-9 to PLACE a number
-</p>
-<p>
-    2. Hold the SHIFT key and press any number from 1-9 while hovering your mouse over a tile to MARK a number
-</p>
-<h5>Start A New Puzzle</h5>
-<a role="button" class="btn btn-success" href="{{ url_for('user.new_puzzle', diff='easy')}}" )">Easy</a>
+        <h5> Games Completed </h5>
 
-<br>
-<br>
-<h5> Games in Progess </h5>
+        {% if completed|length != 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Difficulty</th>
+                    <th scope="col">Time taken</th>
+                    <th scope="col">View</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in completed %}
+                <tr>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }} seconds</td>
+                    <td><a href="{{ url_for('user.view_puzzle', uuid=i[2]) }}">view</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="text-center"><small><i>You don't have any completed boards!</i></small></p>
+        {% endif %}
 
-<h5> Games Completed </h5>
+    </div>
+    <div class="col-4">
 
+        <h5>Start A New Puzzle</h5>
+        <div class="list-group">
+            <div class="list-group-item">
+                <a role="button" class="btn btn-success w-100" href="{{ url_for('user.new_puzzle', diff='easy')}}" )">Easy</a>
+            </div>
+            <div class="list-group-item">
+                <a role="button" class="btn btn-warning w-100" href="{{ url_for('user.new_puzzle', diff='medium')}}" )">Medium</a>
+            </div>
+            <div class="list-group-item">
+                <a role="button" class="btn btn-primary w-100" href="{{ url_for('user.new_puzzle', diff='hard')}}" )">Hard</a>
+            </div>
+            <div class="list-group-item">
+                <a role="button" class="btn btn-danger w-100" href="{{ url_for('user.new_puzzle', diff='insane')}}" )">Insane</a>
+            </div>
+            <div class="list-group-item">
+                <a role="button" class="btn btn-dark w-100" href="{{ url_for('user.new_puzzle', diff='demo')}}" )">Demo</a>
+            </div>
+        </div>
+
+
+
+        <br>
+        <br>
+
+    </div>
+
+
+</div>
 {% endblock content %}

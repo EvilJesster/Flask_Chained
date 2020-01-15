@@ -59,3 +59,13 @@ ivanG -- 2020-01-13 16:26
       
 ayhamA -- 2020-01-15 08:28
       Added stopwatch to puzzle page to keepy track of how long player is playing
+
+ivanG -- 2020-01-15 10:04
+      Got a lot of nice stuff done
+      Puzzles can now be fininished and time will be recorded
+      Revamped user home to show things neatly and nicely
+      You can now view a board after completing it, but some features are off.
+      You can now generate puzzles of any difficulty
+      
+      Still need to fix pencilmark saving...
+
