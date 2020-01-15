@@ -56,3 +56,6 @@ chenH -- 2020-01-14 8:18
 ivanG -- 2019-01-13 16:26
       Puzzles are now saved as user is working on them (through our own API)
       It's actually pretty cool
+      
+ayhamA -- 2019-01-15 08:28
+      Added stopwatch to puzzle page 
