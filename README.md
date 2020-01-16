@@ -4,14 +4,14 @@
 Jesse Hall (PM)
 
 Ivan Galakhov
-* Login/Database system [done]
-* Frontend Sudoku editor [in progress]
+* Login/Database system
+* Frontend Sudoku editor
 * Frontend-Backend interaction
+* Database design
 
 Ayham Alnasser
-* Sudoku puzzle generator [done]
-* Sudoku puzzle solver [done]
-* Backend DB [done]
+* Sudoku puzzle generator
+* Sudoku puzzle solver
 
 Hong Wei Chen
 * Leaderboard functionality
@@ -19,7 +19,7 @@ Hong Wei Chen
 
 
 # Project Overview
-The classic logic game, Sudoku, in a portable website built with JavaScript. The puzzles are automatically generated in accordance with difficulty settings: easy, medium, hard, killer. Users can create an account to save finished puzzles and times or can play without an account. A set of weekly leaderboards is displayed on the page, ranking the users by the amount of time it took for them to finish the puzzle, differentiated by the difficulty setting. If the user is stuck, they can request hints, with a certain penalty being added to their time setting. We would also like to add functionality to allow users to export PDFs into various forms, and maybe even have them emailed to the user if necessarry. 
+The classic logic game, Sudoku, in a portable website built with JavaScript. The puzzles are automatically generated in accordance with difficulty settings: easy, medium, hard, killer. Users can create an account to save finished puzzles and times or can play without an account. A set of weekly leaderboards is displayed on the page, ranking the users by the amount of time it took for them to finish the puzzle, differentiated by the difficulty setting. 
 
 # Sounds like you'll do really well! what does this project use?
 
@@ -35,8 +35,8 @@ The classic logic game, Sudoku, in a portable website built with JavaScript. The
 * jQuery (QaF post incoming)
 
 # Wow! APIs?
-* [Random Useless Facts API](https://uselessfacts.jsph.pl/) which requires no API keys! The API will be used to give the user fun facts to look at while their sudoku puzzle is loading (which could take upwards of 30 seconds). 
-
+* [Random Useless Facts API](https://uselessfacts.jsph.pl/) ([knowledge base document](https://docs.google.com/document/d/1AbBv9kVinKeExUQCl0Y3JHxyVVIjgmLV22VOxUb0Efo/edit)) which requires no API keys! The API will be used to give the user fun facts to look at while their sudoku puzzle is loading (which could take upwards of 30 seconds). 
+* Our app also communicates internally with our own private API.
 
 # Launch Codes 
 1. Open Your Terminal and cd into the location of this project
