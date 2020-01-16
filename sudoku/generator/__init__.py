@@ -239,7 +239,7 @@ def puzzle_gen(sudoku, demo_parameter=False):
     cells = [i for i in range(81)]
     while cells:
         copy_s = copy.deepcopy(sudoku)
-        rand_index = random.choice(cells) if not demo_parameter else random.choice(42, 36, 25)
+        rand_index = random.choice(cells)
         cells.remove(rand_index)
         copy_s[rand_index].reset()
         s = solve(copy_s)
@@ -346,8 +346,8 @@ def main(level):
         return sudoku_to_array(s[0])[:81], solved
     if level == 'Demo':
         p = perfect_sudoku()
-        s = copy.deepcopy(p)
-        return sudoku_to_array(s)[:81], p
+        solved = copy.deepcopy(p)
+        return sudoku_to_array(p), solved
     else:
         print("Difficulty doesn't exist")
         raise ValueError
@@ -356,4 +356,6 @@ def gen_sudoku(difficulty):
     # for testing    
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE, DEMO])
     ans = main(difficulty)
+    if difficulty == DEMO:
+        ans[0][42] = ans[0][39] = ans[0][81] = 0
     return ans
