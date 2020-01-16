@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, url_for, redirect, flash
 from flask_login import login_required, current_user
-from sudoku.generator import gen_sudoku, EASY, MEDIUM, HARD, INSANE
+from sudoku.generator import gen_sudoku, EASY, MEDIUM, HARD, INSANE, DEMO
 from app.models import Sudoku, SudokuSaveState, db
 import threading
 import time
@@ -74,7 +74,7 @@ def new_puzzle_callback(diff, uuid):
 def new_puzzle(diff):
 
     # ensure that difficulty is right
-    if not diff.capitalize() in [EASY, MEDIUM, HARD, INSANE]:
+    if not diff.capitalize() in [EASY, MEDIUM, HARD, INSANE, DEMO]:
         return 'no'
 
     # generate a unique ID so we can refer to this puzzle

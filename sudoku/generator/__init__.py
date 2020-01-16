@@ -20,12 +20,12 @@ class Cell:
         return str(self.answer)
 
     def remove(self, num):
-        if num in self.possibleAnswers and self.solved == False:
+        if num in self.possibleAnswers and not self.solved:
             self.possibleAnswers.remove(num)
             if len(self.possibleAnswers) == 1:
                 self.answer = self.possibleAnswers[0]
                 self.solved = True
-        if num in self.possibleAnswers and self.solved == True:
+        if num in self.possibleAnswers and self.solved:
             self.answer = 0
 
     def len_of_possible(self):
@@ -234,12 +234,12 @@ def solve(sudoku, n=0):
     return False
 
 
-def puzzle_gen(sudoku):
+def puzzle_gen(sudoku, demo_parameter=False):
     """ Generates a puzzle with a unique solution. """
     cells = [i for i in range(81)]
     while cells:
         copy_s = copy.deepcopy(sudoku)
-        rand_index = random.choice(cells)
+        rand_index = random.choice(cells) if not demo_parameter else random.choice(42, 36, 25)
         cells.remove(rand_index)
         copy_s[rand_index].reset()
         s = solve(copy_s)
@@ -258,7 +258,7 @@ def puzzle_gen(sudoku):
             ##            print("Level: " + str(f[2]))
             #print([str(x) for x in sudoku], f[1], f[2])
             return sudoku, f[1], f[2]
-
+        
 
 def equal_checker(s1, s2):
     """ Checks to see if two puzzles are the same"""
@@ -344,17 +344,16 @@ def main(level):
             print("Level: " + str(s[2]))
             printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
-    else:
-        raise ValueError
     if level == 'Demo':
         p = perfect_sudoku()
         s = copy.deepcopy(p)
-        s[42] = s[51] = s[39] = 0
-        return sudoku_to_array(s[0])[:81], solved
-    
+        return sudoku_to_array(s)[:81], p
+    else:
+        print("Difficulty doesn't exist")
+        raise ValueError
+
 def gen_sudoku(difficulty):
     # for testing    
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE, DEMO])
     ans = main(difficulty)
     return ans
-
