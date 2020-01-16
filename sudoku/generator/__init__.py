@@ -284,10 +284,10 @@ def main(level):
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
             return sudoku_to_array(s[0])[:81], solved
-        if level == 'Medium':
-            p = perfect_sudoku()
-            solved = copy.deepcopy(p)
-            s = puzzle_gen(p)
+    if level == 'Medium':
+        p = perfect_sudoku()
+        solved = copy.deepcopy(p)
+        s = puzzle_gen(p)
         while s[2] == 'Easy':
             n += 1
             s = puzzle_gen(p)
@@ -301,7 +301,7 @@ def main(level):
             print("Runtime is " + str(t3) + " seconds")
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
-            printSudoku(s[0])
+          #   printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
     if level == 'Hard':
         p = perfect_sudoku()
@@ -325,7 +325,7 @@ def main(level):
             print("Runtime is " + str(t3) + " seconds")
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
-        printSudoku(s[0])
+        # printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
     if level == 'Insane':
         p = perfect_sudoku()
@@ -342,7 +342,7 @@ def main(level):
             print("Runtime is " + str(t3) + " seconds")
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
-            printSudoku(s[0])
+           #  printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
     if level == 'Demo':
         p = perfect_sudoku()
