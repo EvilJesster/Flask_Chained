@@ -73,3 +73,6 @@ ayhamA -- 2020-01-15 22:14
        Puzzles in demo mode are fully functional
        updates the db when demo mode is activated
        
+hongweiC -- 2020-01-15 23:58
+      Leaderboard is functional and filtered by difficulty
+       
