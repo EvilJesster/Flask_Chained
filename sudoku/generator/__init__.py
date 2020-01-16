@@ -283,8 +283,8 @@ def main(level):
             print("Runtime is " + str(t3) + " seconds")
             print("Guesses: " + str(s[1]))
             print("Level: " + str(s[2]))
-            return sudoku_to_array(s[0])[:81], solved
-    if level == 'Medium':
+        return sudoku_to_array(s[0])[:81], solved
+    elif level == 'Medium':
         p = perfect_sudoku()
         solved = copy.deepcopy(p)
         s = puzzle_gen(p)
@@ -303,7 +303,7 @@ def main(level):
             print("Level: " + str(s[2]))
           #   printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
-    if level == 'Hard':
+    elif level == 'Hard':
         p = perfect_sudoku()
         solved = copy.deepcopy(p)
         s = puzzle_gen(p)
@@ -327,7 +327,7 @@ def main(level):
             print("Level: " + str(s[2]))
         # printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
-    if level == 'Insane':
+    elif level == 'Insane':
         p = perfect_sudoku()
         solved = copy.deepcopy(p)
         s = puzzle_gen(p)
@@ -344,16 +344,16 @@ def main(level):
             print("Level: " + str(s[2]))
            #  printSudoku(s[0])
         return sudoku_to_array(s[0])[:81], solved
-    if level == 'Demo':
+    elif level == 'Demo':
         p = perfect_sudoku()
         solved = copy.deepcopy(p)
         return sudoku_to_array(p), solved
     else:
         print("Difficulty doesn't exist")
+        print(level, level == 'Easy')
         raise ValueError
 
-def gen_sudoku(difficulty):
-    # for testing    
+def gen_sudoku(difficulty):    
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE, DEMO])
     ans = main(difficulty)
     if difficulty == DEMO:
