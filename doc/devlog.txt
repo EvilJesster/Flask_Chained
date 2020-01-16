@@ -75,4 +75,11 @@ ayhamA -- 2020-01-15 22:14
        
 hongweiC -- 2020-01-15 23:58
       Leaderboard is functional and filtered by difficulty
+      Can view and play games from leaderboard
+      
+hongweiC -- 2020-01-16 1:20
+      Cleaned up code in python files
+      Removed settings page
+      Added rank column to leaderboard
+      Remade our site map 
        
