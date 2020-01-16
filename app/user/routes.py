@@ -35,6 +35,26 @@ def leaderboard():
 
     return render_template('user/leaderboard.html')
 
+@user.route('/leaderboard/<diff>')
+@login_required
+def leaderboardDisplay(diff):
+
+    #grab all the games
+    games = SudokuSaveState.query.all()
+    #need completed games information
+    completed = []
+
+
+    for i in games:
+        #if completed and matching the requested difficulty, add to list
+        if i.time_end != None and i.board.difficulty == diff.upper():
+            completed.append((i.user.username, i.time_end - i.time_start, i.board.uuid))
+
+    #sort list by time taken
+    completed.sort(key=lambda game: game[1])
+
+    return render_template('user/leaderboard.html', diff = diff.capitalize(), completed = completed)
+
 # Settings
 @user.route('/settings')
 @login_required

@@ -5,13 +5,42 @@
 <h3>LEADERBOARD</h3>
 
 <p>
-    You may view how all users do on different difficulties of sudoku. You may select from which difficulty you want to view a leaderboard from. Games are ranked by the time taken to complete a game. All games are completed.
+    You may view how all users do on different difficulties of sudoku. You may select from which difficulty you want to view a leaderboard from. Games are ranked by the time taken to complete a game. You may view the games.
 </p>
 
-<input class="btn btn-info" type = "submit" value = "DEMO">
-<input class="btn btn-success" type="submit" value="EASY">
-<input class="btn btn-warning" type="submit" value="MEDIUM">
-<input class="btn btn-primary" type="submit" value="HARD">
-<input class="btn btn-danger" type="submit" value="INSANE">
+
+<a role = "button" class ="btn btn-success" href = "{{ url_for('user.leaderboardDisplay', diff = 'easy')}}">EASY</a>
+<a role = "button" class="btn btn-warning" href = "{{ url_for('user.leaderboardDisplay', diff = 'medium')}}">MEDIUM</a>
+<a role = "button" class="btn btn-primary" href = "{{ url_for('user.leaderboardDisplay', diff = 'hard')}}">HARD</a>
+<a role = "button" class="btn btn-danger" href = "{{ url_for('user.leaderboardDisplay', diff = 'insane')}}">INSANE</a>
+<a role = "button " class="btn btn-info" href = "{{ url_for('user.leaderboardDisplay', diff = 'demo')}}">DEMO</a>
+
+<br>
+<br>
+<br>
+
+{% if completed|length != 0 %}
+<h3>{{diff}} difficulty</h3>
+<table class = "table">
+  <thead>
+    <tr>
+      <th scope = "col">User</th>
+      <th scope = "col">Time taken</th>
+      <th scope = "col">View</th>
+    </tr>
+  <thead>
+  <tbody>
+    {% for i in completed %}
+    <tr>
+      <td>{{ i[0] }}</td>
+      <td>{{ i[1] }}</td>
+      <td><a href="{{ url_for('user.view_puzzle', uuid = i[2]) }}">View Game</a></td>
+   </tr>
+   {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h5>There is currently no difficulty selected to display or there are no solved boards of the selected difficulty.</h5>
+{% endif %}
 
 {% endblock content %}
