@@ -33,7 +33,7 @@
   <tbody>
     {% for i in completed %}
     <tr>
-      <td>{{i|int + 1}}</td>
+      <td>{{loop.index}}</td>
       <td>{{ i[0] }}</td>
       <td>{{ i[1] }} seconds</td>
       <td><a href="{{ url_for('user.view_puzzle', uuid = i[2]) }}">View Game</a></td>
