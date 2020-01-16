@@ -195,6 +195,8 @@ save_board_state = (id, uuid) => {
     let cur_num_state = get_user_number_state('#puzzle');
     let cur_pencilmark_state = get_user_pencilmark_state('#puzzle');
 
+    console.log(cur_pencilmark_state);
+
     $.post("/api/save_state/" + uuid, {
         numbers: cur_num_state,
         pencilmarks: cur_pencilmark_state
@@ -209,8 +211,8 @@ recover_save_state = (id, numbers, pencilmarks) => {
                 toggle_number(get_td(id, j, i), numbers[i * 9 + j]);
             }
             for (let k = 0; k < 9; k++) {
-                if (pencilmarks[i * 91 + j * 8 + k] != "_") {
-                    toggle_pencilmark(get_td(id, i, j),
+                if (pencilmarks[i * 81 + j * 9 + k] != "_") {
+                    toggle_pencilmark(get_td(id, j, i),
                         parseInt(pencilmarks[i * 91 + j * 8 + k]));
                 }
             }
