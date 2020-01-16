@@ -357,5 +357,5 @@ def gen_sudoku(difficulty):
     assert(difficulty in [EASY, MEDIUM, HARD, INSANE, DEMO])
     ans = main(difficulty)
     if difficulty == DEMO:
-        ans[0][42] = ans[0][39] = ans[0][81] = 0
+        ans[0][42] = ans[0][29] = ans[0][80] = 0
     return ans
