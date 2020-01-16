@@ -69,3 +69,7 @@ ivanG -- 2020-01-15 10:04
       
       Still need to fix pencilmark saving...
 
+ayhamA -- 2020-01-15 22:14
+       Puzzles in demo mode are fully functional
+       updates the db when demo mode is activated
+       
