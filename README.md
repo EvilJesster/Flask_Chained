@@ -12,6 +12,8 @@ Ivan Galakhov
 Ayham Alnasser
 * Sudoku puzzle generator
 * Sudoku puzzle solver
+* DB Initialization
+* Video Maker
 
 Hong Wei Chen
 * Leaderboard functionality
@@ -19,7 +21,7 @@ Hong Wei Chen
 
 
 # Project Overview
-The classic logic game, Sudoku, in a portable website built with JavaScript. The puzzles are automatically generated in accordance with difficulty settings: easy, medium, hard, killer. Users can create an account to save finished puzzles and times or can play without an account. A set of weekly leaderboards is displayed on the page, ranking the users by the amount of time it took for them to finish the puzzle, differentiated by the difficulty setting. 
+The classic logic game, Sudoku, in a portable website built with JavaScript. The puzzles are automatically generated in accordance with difficulty settings: easy, medium, hard, insane. Users can create an account to save finished puzzles and times or can play without an account. A set of weekly leaderboards is displayed on the page, ranking the users by the amount of time it took for them to finish the puzzle, differentiated by the difficulty setting. 
 
 # Sounds like you'll do really well! what does this project use?
 
