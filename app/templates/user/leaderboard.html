@@ -5,7 +5,7 @@
 <h3>LEADERBOARD</h3>
 
 <p>
-    You may view how all users do on different difficulties of sudoku. You may select from which difficulty you want to view a leaderboard from. Games are ranked by the time taken to complete a game. You may view the games.
+    You may view how all users do on different difficulties of sudoku. You may select from which difficulty you want to view a leaderboard from. Games are ranked by the time taken to complete a game. You may view and play the games.
 </p>
 
 
@@ -24,6 +24,7 @@
 <table class = "table">
   <thead>
     <tr>
+      <th scope = "col">Rank</th>
       <th scope = "col">User</th>
       <th scope = "col">Time taken</th>
       <th scope = "col">View</th>
@@ -32,8 +33,9 @@
   <tbody>
     {% for i in completed %}
     <tr>
+      <td>{{i|int + 1}}</td>
       <td>{{ i[0] }}</td>
-      <td>{{ i[1] }}</td>
+      <td>{{ i[1] }} seconds</td>
       <td><a href="{{ url_for('user.view_puzzle', uuid = i[2]) }}">View Game</a></td>
    </tr>
    {% endfor %}

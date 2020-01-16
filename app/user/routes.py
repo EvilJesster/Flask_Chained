@@ -55,13 +55,6 @@ def leaderboardDisplay(diff):
 
     return render_template('user/leaderboard.html', diff = diff.capitalize(), completed = completed)
 
-# Settings
-@user.route('/settings')
-@login_required
-def settings():
-
-    return render_template('user/settings.html')
-
 # test route for sudoku board demo
 @user.route('/sudoku_test')
 @login_required
