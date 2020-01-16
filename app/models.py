@@ -53,17 +53,3 @@ class SudokuSaveState(db.Model):
     def __init__(self, user, sudoku):
         self.user_id = user.id
         self.sudoku_id = sudoku.id
-    
-
-class Leaderboard(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable = False)
-    game = db.Column(db.String(100), nullable = False)
-    time = db.Column(db.Float, nullable = False)
-    difficulty = db.Column(db.String(20), nullable = False)
-
-    def __init__(self, username, game, time, difficulty):
-        self.username = username
-        self.game = game
-        self.time = time
-        self.difficulty = difficulty
