@@ -19,7 +19,8 @@ Hong Wei Chen
 * Leaderboard functionality
 * CSS design
 
-
+# VIDEO
+[Video Demo here](https://youtu.be/su9gPzbYzws)
 # Project Overview
 The classic logic game, Sudoku, in a portable website built with JavaScript. The puzzles are automatically generated in accordance with difficulty settings: easy, medium, hard, insane. Users can create an account to save finished puzzles and times or can play without an account. A set of weekly leaderboards is displayed on the page, ranking the users by the amount of time it took for them to finish the puzzle, differentiated by the difficulty setting. 
 
